@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// Logic Login
+Cypress.Commands.add('login', (email, password) => {
+    if(email) cy.get('input[name="email"]').clear().type(email);
+    else cy.get('input[name="email"]').focus().blur();
+
+    if(email) cy.get('input[name="password"]').clear().type(password);
+    else cy.get('input[name="password"]').focus().blur();
+
+    cy.get('button[type=submit]').click();
+})
